@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  descricao: MyString
+  parcelas: 1
+  vencimento: 2012-08-08
+  valor: 1.5
+  pago: 1
+
+two:
+  descricao: MyString
+  parcelas: 1
+  vencimento: 2012-08-08
+  valor: 1.5
+  pago: 1

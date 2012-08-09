@@ -1,0 +1,44 @@
+<%- model_class = Conta -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:descricao) %></th>
+      <th><%= model_class.human_attribute_name(:parcelas) %></th>
+      <th><%= model_class.human_attribute_name(:vencimento) %></th>
+      <th><%= model_class.human_attribute_name(:valor) %></th>
+      <th><%= model_class.human_attribute_name(:pago) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @contas.each do |conta| %>
+      <tr>
+        <td><%= link_to conta.id, conta_path(conta) %></td>
+        <td><%= conta.descricao %></td>
+        <td><%= conta.parcelas %></td>
+        <td><%= conta.vencimento %></td>
+        <td><%= conta.valor %></td>
+        <td><%= conta.pago %></td>
+        <td><%=l conta.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_conta_path(conta), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      conta_path(conta),
+                      :method => :delete,
+                      :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_conta_path,
+            :class => 'btn btn-primary' %>
